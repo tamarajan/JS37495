@@ -19,6 +19,13 @@ h2 {
     text-align: center;
 }
 
+footer h3 {
+    font-style: italic;
+    font-size: large;
+    text-align: center;
+    padding: 15px;
+}
+
 #calcularNeto .btn-primary {
     background-color:rgb(192, 180, 207);
     border-color: rgb(158, 136, 185);
