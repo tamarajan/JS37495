@@ -21,7 +21,7 @@ let calcularNeto = () => {
 
     sueldoNeto.innerHTML = `
         <div>
-        <h3>Tu sueldo neto es de ${montoBruto} pesos argentinos</h3>
+        <h3>Tu sueldo neto es de $${montoBruto} Pesos Argentinos</h3>
         </div>
     `
 }
