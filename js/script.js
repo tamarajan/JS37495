@@ -1,46 +1,56 @@
 
+
+
 let calcularNeto = () => {
+
     let montoBruto = document.getElementById("montoBruto").value
     let sueldoNeto = document.getElementById("sueldoNeto")
+    
 
+    function descuentos (jubilacion, obraSocial, pami, sindicato) {
 
+        switch (sindicato = document.getElementById("sindicato").value) {
+            case "no":
+                sindicato = 0;
+                break;
+            case "si":
+                sindicato = parseInt(montoBruto) * 0.02;
+                break;
+            default:
+                alert("Por favor, ingresá si o no.");
+                break;
+        }
 
-    let jubilacion = parseInt(montoBruto) * 0.11;
-    console.log('La Jubilacion es el pago mensual de una suma de dinero que el Estado paga a las personas que han concluido su ciclo laboral. Los aportes por este motivo son del 11% del salario bruto y se transfieren a la ANSeS.');
-    let obraSocial = parseInt(montoBruto) * 0.03;
-    console.log('Las obras sociales son entidades encargadas de organizar la prestación de la atención médica de los trabajadores. Los aportes por este motivo son del 3% del salario bruto y se transfieren a la obra social elegida por el trabajador.');
-    let pami = parseInt(montoBruto) * 0.03;
-    console.log('La ley 19032, es la Ley por la cual se crea el Instituto Nacional de Servicios Sociales para Jubilados y Pensionados (creación del PAMI). Es un descuento que se realiza a los trabajadores activos para brindarle asistencia social y salud a los jubilados y pensionados. Los aportes por este motivo son del 3% del salario bruto y se transfieren a PAMI.');
+        return jubilacion + obraSocial + pami + sindicato;
 
-
-
-    let sindicato = document.getElementById("sindicato").value
-
-
-    switch (sindicato) {
-        case "no":
-            sindicato = 0;
-            break;
-        case "si":
-            sindicato = parseInt(montoBruto) * 0.02;
-            console.log('Un sindicato es una asociación integrada por trabajadores en defensa y promoción de sus intereses sociales, económicos y profesionales. El aporte al sindicato (generalmente del 1% al 3% del sueldo bruto) es voluntario para quienes decidan afiliarse a su sindicato de actividad.');
-            break;
-        default:
-            alert("Por favor, ingresá si o no.");
-            break;
+        
     }
 
 
+    let descuentosTotal = descuentos((parseInt(montoBruto) * 0.11), (parseInt(montoBruto) * 0.03), (parseInt(montoBruto) * 0.03), (parseInt(montoBruto) * 0.02));
 
 
-
-    montoBruto = montoBruto - jubilacion - obraSocial - pami - sindicato
+    montoBruto = montoBruto - descuentosTotal
     console.log('El sueldo neto es el dinero total que percibe un trabajador de bolsillo por el trabajo que desempeña luego de que al mismo se le efectúen las correspondientes retenciones (descuentos).');
 
 
     sueldoNeto.innerHTML = `
         <div>
-        <h3>Tu sueldo neto es de ${montoBruto} pesos argentinos</h3>
+        <h3>Tu sueldo neto es de $${montoBruto} pesos argentinos</h3>
         </div>
     `
 }
+
+const adicionales = [
+    { nombre: 'Gastos equipamiento del trabajador', monto: 1600 },
+    { nombre: 'Viáticos', monto: 8000 },
+    { nombre: 'Bono por ventas', monto: 2000 },
+]
+
+const adicionalesDic = [
+    { nombre: 'Bono Fin de Año', monto: 1600 },
+    { nombre: 'Bono reemplazo Caja Navideña', monto: 2300 },
+]
+
+adicionales.push(adicionalesDic)
+console.log(adicionales);
