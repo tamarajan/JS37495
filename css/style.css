@@ -31,8 +31,14 @@ footer h3 {
     border-color: rgb(158, 136, 185);
     font-weight: 500;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 #calcularNeto .btn-primary:hover {
     background-color:rgb(158, 136, 185);
+}
+
+#sueldoNetoDic h3{
+    font-style: italic;
+    font-size: small;
 }
