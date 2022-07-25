@@ -20,18 +20,23 @@ let calcularNeto = () => {
             case "si":
             case "Si":
             case "SI":
-                sindicato = document.getElementById("sindicatoPorcentaje").value
-                if (sindicatoPorcentaje == 2) {
+                switch (sindicato = document.getElementById("sindicatoPorcentaje").value){
+                case "2": {
                     sindicato = (2 / 100);
+                    break;
                 }
-                else (sindicatoPorcentaje == 3); {
-                    sindicato = (3 / 100);
-                }
-                break;
 
-            default:
+                case "3": {
+                    sindicato = (3 / 100);
+                    break;
+                }
+
+                default:
                 alert("Por favor, ingresá si o no.");
                 break;
+            }
+
+            
 
         }
 
@@ -42,7 +47,7 @@ let calcularNeto = () => {
     let descuentosTotal = descuentos((parseInt(montoBruto) * 0.11), (parseInt(montoBruto) * 0.03), (parseInt(montoBruto) * 0.03), (parseInt(montoBruto) * parseInt(sindicato)));
 
     montoBruto = montoBruto - descuentosTotal
-    console.log('El sueldo neto es el dinero total que percibe un trabajador de bolsillo por el trabajo que desempeña luego de que al mismo se le efectúen las correspondientes retenciones (descuentos).');
+
 
     sueldoNeto.innerHTML = `
         <div>
@@ -53,18 +58,24 @@ let calcularNeto = () => {
 }
 
 
-const adicionales = [
-    { nombre: 'Gastos equipamiento del trabajador', monto: 1600 },
-    { nombre: 'Viáticos', monto: 8000 },
-    { nombre: 'Bono por ventas', monto: 2000 },
-    { nombre: 'Bono Fin de Año', monto: 1600 },
-    { nombre: 'Bono reemplazo Caja Navideña', monto: 2300 },
-]
+let calcularAdicionalesDic = () => {
 
-const adicionalesDic = adicionales.reduce((acc, num) => acc + num.monto, 0)
+    const adicionales = [
+        { nombre: 'Gastos equipamiento del trabajador', monto: 1600 },
+        { nombre: 'Viáticos', monto: 8000 },
+        { nombre: 'Bono por ventas', monto: 2000 },
+        { nombre: 'Bono Fin de Año', monto: 1600 },
+        { nombre: 'Bono reemplazo Caja Navideña', monto: 2300 },
+    ]
 
-sueldoNetoDic.innerHTML = `
-        <div>
-        <h3>*En el mes de Diciembre, tu sueldo neto tendrá un adicional de $${adicionalesDic} pesos argentinos</h3>
-        </div>
-    `
+    const adicionalesDic = adicionales.reduce((acc, num) => acc + num.monto, 0)
+
+    adicionalesDiciembre.innerHTML = `
+    <div>
+    <h3>En el mes de Diciembre, tu sueldo neto tendrá un adicional de $${adicionalesDic} pesos argentinos</h3>
+    </div>
+`
+
+}
+
+
