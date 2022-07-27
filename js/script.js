@@ -7,36 +7,32 @@ let calcularNeto = () => {
     let sueldoNeto = document.getElementById("sueldoNeto")
 
 
-    function descuentos(jubilacion, obraSocial, pami, sindicato) {
+    function descuentos(jubilacion, obraSocial, pami, sindicato, aportaSindicato, porcentajeSindicato) {
 
-        switch (sindicato = document.getElementById("sindicato").value) {
+        switch (aportaSindicato = document.getElementById("sindicato").value.toLowerCase()) {
 
             case "no":
-            case "No":
-            case "NO":
                 sindicato = 0;
                 break;
 
             case "si":
-            case "Si":
-            case "SI":
-                switch (sindicato = document.getElementById("sindicatoPorcentaje").value){
-                case "2": {
-                    sindicato = (2 / 100);
-                    break;
+                switch (porcentajeSindicato = document.getElementById("sindicatoPorcentaje").value) {
+                    case "2": {
+                        sindicato = 0.02;
+                        break;
+                    }
+
+                    case "3": {
+                        sindicato = 0.03;
+                        break;
+                    }
+
+                    default:
+                        alert("Por favor, ingresá si o no.");
+                        break;
                 }
 
-                case "3": {
-                    sindicato = (3 / 100);
-                    break;
-                }
 
-                default:
-                alert("Por favor, ingresá si o no.");
-                break;
-            }
-
-            
 
         }
 
@@ -72,10 +68,8 @@ let calcularAdicionalesDic = () => {
 
     adicionalesDiciembre.innerHTML = `
     <div>
-    <h3>En el mes de Diciembre, tu sueldo neto tendrá un adicional de $${adicionalesDic} pesos argentinos</h3>
+    <h3>En el mes de Diciembre, tu sueldo neto tendrá un adicional de $${adicionalesDic} pesos argentinos.</h3>
     </div>
 `
 
 }
-
-
