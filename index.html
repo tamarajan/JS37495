@@ -25,7 +25,8 @@
 
 
         <div class="input-group mb-3">
-            <h3>En caso de que estes afiliado a un sindicato, ingresa la palabra "si". En el caso de que no estes afiliado o estes fuera de convenio, ingresá la palabra "no".</h3>
+            <h3>En caso de que estes afiliado a un sindicato, ingresa la palabra "si". En el caso de que no estes
+                afiliado o estes fuera de convenio, ingresá la palabra "no".</h3>
             <input type="text" class="form-control" aria-label="Amount" id="sindicato">
         </div>
         <div>
@@ -38,10 +39,53 @@
 
         <div id="sueldoNeto"></div>
 
-        <button class="btn btn-primary" onclick="calcularAdicionalesDic()">Calcular Adicionales en Diciembre</button>
+        <button class="btn btn-primary" id="mostrarMasInfo">Mostrar más Información</button>
 
-        <div id="adicionalesDiciembre"></div>
+        <div id="masInfo" class="hidden">
+            <p>Sueldo Bruto: El sueldo bruto es el dinero total que percibe un trabajador por el trabajo que desempeña
+                antes que al mismo se le efecten las correspondientes retenciones (descuentos).
+            </p>
+            <p>Jubilación: La Jubilacion es el pago mensual de una suma de dinero que el Estado paga a las personas que
+                han concluido su ciclo laboral. Los aportes por este motivo son del 11% del salario bruto y se
+                transfieren a la ANSeS.</p>
+            <p>Obra Social: Las obras sociales son entidades encargadas de organizar la prestación de la atención médica
+                de los trabajadores. Los aportes por este motivo son del 3% del salario bruto y se transfieren a la obra
+                social elegida por el trabajador.</p>
+            <p>PAMI: La ley 19032, es la Ley por la cual se crea el Instituto Nacional de Servicios Sociales para
+                Jubilados y Pensionados (creación del PAMI). Es un descuento que se realiza a los trabajadores activos
+                para brindarle asistencia social y salud a los jubilados y pensionados. Los aportes por este motivo son
+                del 3% del salario bruto y se transfieren a PAMI.</p>
+            <p>Sindicato: Un sindicato es una asociación integrada por trabajadores en defensa y promoción de sus
+                intereses sociales, económicos y profesionales. El aporte al sindicato (generalmente del 1% al 3% del
+                sueldo bruto) es voluntario para quienes decidan afiliarse a su sindicato de actividad.</p>
+        </div>
 
+
+
+
+
+    </div>
+
+
+    <div id="calcularAdicionales">
+        <div class="input-group mb-3">
+            <h2>Calcular Sueldo Adicional a percibir en el mes de Diciembre del 2022</h2>
+            <button class="btn btn-primary" onclick="calcularAdicionalesDic()">Calcular Adicionales en Diciembre</button>
+            <div id="adicionalesDiciembre"></div>
+        </div>
+    </div>
+
+
+    <div id="calcularAguinaldo">
+        <div class="input-group mb-3">
+            <h2>Calcular el Sueldo Anual Complementario y SAC proporcional 2022</h2>
+            <h3>Ingresá el mayor Sueldo Neto, sin adicionales, que hayas percibido en el semestre:</h3>
+            <input type="text" class="form-control" aria-label="Amount" id="aguinaldo">
+        </div>
+
+        <button class="btn btn-primary" onclick="calcularAguinaldo()">Calcular Aguinaldo</button>
+
+        <div id="aguinaldoFinal"></div>
     </div>
 
     <footer>

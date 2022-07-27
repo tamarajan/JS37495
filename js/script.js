@@ -47,13 +47,27 @@ let calcularNeto = () => {
 
     sueldoNeto.innerHTML = `
         <div>
-        <h3>Tu sueldo neto es de $${montoBruto} pesos argentinos</h3>
+        <h3>Tu sueldo neto es de $${montoBruto} pesos argentinos.</h3>
         </div>
     `
-
+    
 }
 
+window.addEventListener('load', init, false);
+    function init() {
+        let div = document.querySelector('#masInfo');
+        div.style.visibility = 'hidden';
+        let boton = document.querySelector('#mostrarMasInfo');
+        boton.addEventListener('click', function (e) {
+            if(div.style.visibility === 'visible'){
+                div.style.visibility = 'hidden';
+            }else{
+                div.style.visibility = 'visible';
+            }
+        }, false);
+    }
 
+    
 let calcularAdicionalesDic = () => {
 
     const adicionales = [
@@ -73,3 +87,21 @@ let calcularAdicionalesDic = () => {
 `
 
 }
+
+
+let calcularAguinaldo = () => {
+
+    let aguinaldo = document.getElementById("aguinaldo").value
+
+    aguinaldo = aguinaldo / 2
+
+    aguinaldoFinal.innerHTML = `
+        <div>
+        <h3>Tu Aguinaldo Neto a cobrar será de $${aguinaldo} pesos argentinos.</h3>
+        </div>
+    `
+
+}
+
+
+

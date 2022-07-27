@@ -8,6 +8,16 @@
     padding: 20px;
 }
 
+#calcularAguinaldo {
+    background-color: rgb(219, 217, 223);
+    padding: 20px;
+}
+
+#calcularAdicionales {
+    background-color: rgb(207, 195, 231);
+    padding: 20px;
+}
+
 h1 {
     padding: 20px;
     font-size: x-large;
@@ -37,4 +47,29 @@ footer h3 {
 #calcularNeto .btn-primary:hover {
     background-color:rgb(158, 136, 185);
 }
+
+#calcularAguinaldo .btn-primary {
+    background-color:rgb(192, 180, 207);
+    border-color: rgb(158, 136, 185);
+    font-weight: 500;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#calcularAguinaldo .btn-primary:hover {
+    background-color:rgb(158, 136, 185);
+}
+
+#calcularAdicionales .btn-primary {
+    background-color:rgb(192, 180, 207);
+    border-color: rgb(158, 136, 185);
+    font-weight: 500;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#calcularAdicionales .btn-primary:hover {
+    background-color:rgb(158, 136, 185);
+}
+
 
