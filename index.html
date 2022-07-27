@@ -13,9 +13,10 @@
 
 <body>
 
+    <h1>Calculadora de Sueldo</h1>
 
     <div id="calcularNeto">
-        <h2>Calculadora de Sueldo</h2>
+        <h2>Calcular Sueldo Neto</h2>
         <h3>Ingresa tu Sueldo Bruto:</h3>
 
         <div class="input-group mb-3">
@@ -39,7 +40,7 @@
 
         <div id="sueldoNeto"></div>
 
-        <button class="btn btn-primary" id="mostrarMasInfo">Mostrar más Información</button>
+        <button class="btn btn-primary" id="mostrarMasInfo" class="buttonMostrarInfo">Mostrar más Información</button>
 
         <div id="masInfo" class="hidden">
             <p>Sueldo Bruto: El sueldo bruto es el dinero total que percibe un trabajador por el trabajo que desempeña
@@ -68,18 +69,17 @@
 
 
     <div id="calcularAdicionales">
-        <div class="input-group mb-3">
-            <h2>Calcular Sueldo Adicional a percibir en el mes de Diciembre del 2022</h2>
-            <button class="btn btn-primary" onclick="calcularAdicionalesDic()">Calcular Adicionales en Diciembre</button>
-            <div id="adicionalesDiciembre"></div>
-        </div>
+        <h2>Calcular Sueldo Adicional a percibir en el mes de Diciembre del 2022</h2>
+        <button class="btn btn-primary" onclick="calcularAdicionalesDic()">Calcular Adicionales en Diciembre</button>
+        <div id="adicionalesDiciembre"></div>
     </div>
 
 
     <div id="calcularAguinaldo">
+        <h2>Calcular el Sueldo Anual Complementario y SAC proporcional 2022</h2>
         <div class="input-group mb-3">
-            <h2>Calcular el Sueldo Anual Complementario y SAC proporcional 2022</h2>
             <h3>Ingresá el mayor Sueldo Neto, sin adicionales, que hayas percibido en el semestre:</h3>
+            <span class="input-group-text">$</span>
             <input type="text" class="form-control" aria-label="Amount" id="aguinaldo">
         </div>
 

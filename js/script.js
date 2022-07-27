@@ -50,24 +50,23 @@ let calcularNeto = () => {
         <h3>Tu sueldo neto es de $${montoBruto} pesos argentinos.</h3>
         </div>
     `
-    
+
 }
 
-window.addEventListener('load', init, false);
-    function init() {
-        let div = document.querySelector('#masInfo');
-        div.style.visibility = 'hidden';
-        let boton = document.querySelector('#mostrarMasInfo');
-        boton.addEventListener('click', function (e) {
-            if(div.style.visibility === 'visible'){
-                div.style.visibility = 'hidden';
-            }else{
-                div.style.visibility = 'visible';
-            }
-        }, false);
-    }
 
-    
+let buttonMostrarInfo = document.querySelector("#mostrarMasInfo");
+let información = document.querySelector("#masInfo");
+
+buttonMostrarInfo.addEventListener("click", mostrarInformación);
+
+function mostrarInformación(event) {
+    event.preventDefault();
+    información.classList.toggle("hidden");
+    this.innerText = información.classList.contains("hidden")
+        ? "Mostrar más información"
+        : "Ocultar la información";
+}
+
 let calcularAdicionalesDic = () => {
 
     const adicionales = [
