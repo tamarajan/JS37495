@@ -5,45 +5,50 @@ let calcularNeto = () => {
 
     let montoBruto = document.getElementById("montoBruto").value
     let sueldoNeto = document.getElementById("sueldoNeto")
+    
 
+    function descuentos(jubilacion, obraSocial, pami, sindicato, sindicatoPorcentaje) {
 
-    function descuentos(jubilacion, obraSocial, pami, sindicato, aportaSindicato, porcentajeSindicato) {
+        sindicato = document.getElementById("sindicato").value.toLowerCase()
+        sindicatoPorcentaje = document.getElementById("sindicatoPorcentaje").value
 
-        switch (aportaSindicato = document.getElementById("sindicato").value.toLowerCase()) {
+        switch (sindicato) {
 
             case "no":
                 sindicato = 0;
                 break;
 
             case "si":
-                switch (porcentajeSindicato = document.getElementById("sindicatoPorcentaje").value) {
+                switch (sindicatoPorcentaje) {
+                
                     case "2": {
                         sindicato = 0.02;
                         break;
                     }
-
+            
                     case "3": {
                         sindicato = 0.03;
                         break;
                     }
-
-                    default:
-                        alert("Por favor, ingresá si o no.");
-                        break;
                 }
+                break;
 
-
-
+            default:
+                alert("Por favor, ingresá si o no.");
+                break;
         }
-
+        
         return jubilacion + obraSocial + pami + sindicato;
 
     }
 
+
+    
+    
     let descuentosTotal = descuentos((parseInt(montoBruto) * 0.11), (parseInt(montoBruto) * 0.03), (parseInt(montoBruto) * 0.03), (parseInt(montoBruto) * parseInt(sindicato)));
 
-    montoBruto = montoBruto - descuentosTotal
 
+    montoBruto = montoBruto - descuentosTotal;
 
     sueldoNeto.innerHTML = `
         <div>
