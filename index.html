@@ -74,16 +74,22 @@
         <div id="adicionalesDiciembre"></div>
     </div>
 
+    <div id="calcularAguinaldoActual">
+        <h2>Calcular el Sueldo Anual Complementario y SAC proporcional 2022</h2>
+        <button class="btn btn-primary" onclick="calcularAguinaldoActual()">Calcular Aguinaldo con Sueldo Neto Actual</button>
+        <div id="aguinaldoActualFinal"></div>
+    </div>
+    
+
 
     <div id="calcularAguinaldo">
-        <h2>Calcular el Sueldo Anual Complementario y SAC proporcional 2022</h2>
         <div class="input-group mb-3">
-            <h3>Ingresá el mayor Sueldo Neto, sin adicionales, que hayas percibido en el semestre:</h3>
+            <h3>Si tu Sueldo Neto será diferente al actual, ingresá el monto neto sin tener en cuenta los adicionales que percibirás:</h3>
             <span class="input-group-text">$</span>
             <input type="text" class="form-control" aria-label="Amount" id="aguinaldo">
         </div>
 
-        <button class="btn btn-primary" onclick="calcularAguinaldo()">Calcular Aguinaldo</button>
+        <button class="btn btn-primary" onclick="calcularAguinaldo()">Calcular Aguinaldo con Otro Sueldo Neto</button>
 
         <div id="aguinaldoFinal"></div>
     </div>

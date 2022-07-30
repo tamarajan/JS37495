@@ -42,19 +42,22 @@ let calcularNeto = () => {
 
     }
 
-
-    
     
     let descuentosTotal = descuentos((parseInt(montoBruto) * 0.11), (parseInt(montoBruto) * 0.03), (parseInt(montoBruto) * 0.03), (parseInt(montoBruto) * parseInt(sindicato)));
 
 
-    montoBruto = montoBruto - descuentosTotal;
+    let montoNeto = montoBruto - descuentosTotal;
+
 
     sueldoNeto.innerHTML = `
         <div>
-        <h3>Tu sueldo neto es de $${montoBruto} pesos argentinos.</h3>
+        <h3>Tu sueldo neto es de $${montoNeto} pesos argentinos.</h3>
         </div>
     `
+
+
+    let sueldoNetoAGuardar = montoNeto;
+    sessionStorage.setItem('neto', sueldoNetoAGuardar);
 
 }
 
@@ -72,6 +75,7 @@ function mostrarInformación(event) {
         : "Ocultar la información";
 }
 
+
 let calcularAdicionalesDic = () => {
 
     const adicionales = [
@@ -82,6 +86,7 @@ let calcularAdicionalesDic = () => {
         { nombre: 'Bono reemplazo Caja Navideña', monto: 2300 },
     ]
 
+
     const adicionalesDic = adicionales.reduce((acc, num) => acc + num.monto, 0)
 
     adicionalesDiciembre.innerHTML = `
@@ -89,6 +94,21 @@ let calcularAdicionalesDic = () => {
     <h3>En el mes de Diciembre, tu sueldo neto tendrá un adicional de $${adicionalesDic} pesos argentinos.</h3>
     </div>
 `
+
+}
+
+
+let calcularAguinaldoActual = () => {
+
+    let aguinaldoActual = parseFloat(sessionStorage.getItem('neto'));
+
+    aguinaldoActual = aguinaldoActual / 2
+
+    aguinaldoActualFinal.innerHTML = `
+        <div>
+        <h3>En base a tu Sueldo Neto actual, tu próximo aguinaldo será de $${aguinaldoActual} pesos argentinos.</h3>
+        </div>
+    `
 
 }
 
@@ -106,6 +126,5 @@ let calcularAguinaldo = () => {
     `
 
 }
-
 
 
