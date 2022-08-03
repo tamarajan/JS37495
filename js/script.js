@@ -5,7 +5,7 @@ let calcularNeto = () => {
 
     let montoBruto = document.getElementById("montoBruto").value
     let sueldoNeto = document.getElementById("sueldoNeto")
-    
+
 
     function descuentos(jubilacion, obraSocial, pami, sindicato, sindicatoPorcentaje) {
 
@@ -20,12 +20,12 @@ let calcularNeto = () => {
 
             case "si":
                 switch (sindicatoPorcentaje) {
-                
+
                     case "2": {
                         sindicato = 0.02;
                         break;
                     }
-            
+
                     case "3": {
                         sindicato = 0.03;
                         break;
@@ -37,13 +37,16 @@ let calcularNeto = () => {
                 alert("Por favor, ingresá si o no.");
                 break;
         }
-        
+
         return jubilacion + obraSocial + pami + sindicato;
 
     }
 
-    
+
     let descuentosTotal = descuentos((parseInt(montoBruto) * 0.11), (parseInt(montoBruto) * 0.03), (parseInt(montoBruto) * 0.03), (parseInt(montoBruto) * parseInt(sindicato)));
+
+
+
 
 
     let montoNeto = montoBruto - descuentosTotal;
@@ -51,13 +54,53 @@ let calcularNeto = () => {
 
     sueldoNeto.innerHTML = `
         <div>
-        <h3>Tu sueldo neto es de $${montoNeto} pesos argentinos.</h3>
+        <h3>Tu sueldo neto es de $${montoNeto} pesos argentinos. Las retenciones al Sueldo Bruto están conformadas por: </h3>
         </div>
     `
+
+    let descuentosNeto = [
+        {
+            "descuento": "Jubilación",
+            "monto": (montoBruto) * 0.11,
+        },
+        {
+            "descuento": "Obra Social",
+            "monto": (montoBruto) * 0.03,
+        },
+        {
+            "descuento": "PAMI",
+            "monto": (montoBruto) * 0.03,
+        },
+        {
+            "descuento": "Sindicato",
+            "monto": (montoBruto) * parseInt(sindicato),
+        },
+    ]
+
+
+    sessionStorage.setItem('descuentos', JSON.stringify(descuentosNeto));
+    let descuentosRecuperados = JSON.parse(sessionStorage.getItem('descuentos'));
+    console.log(descuentosRecuperados);
+
+    function mostrarDescuentos() {
+        let lista = document.getElementById("ulListado");
+        descuentosNeto.forEach(function (data) {
+            let linew = document.createElement("li");
+            let contenido = document.createTextNode(data.descuento + ": $" + data.monto);
+            lista.appendChild(linew);
+            linew.appendChild(contenido);
+
+        })
+    }
+
+    mostrarDescuentos();
+
+
 
 
     let sueldoNetoAGuardar = montoNeto;
     sessionStorage.setItem('neto', sueldoNetoAGuardar);
+
 
 }
 
@@ -89,11 +132,25 @@ let calcularAdicionalesDic = () => {
 
     const adicionalesDic = adicionales.reduce((acc, num) => acc + num.monto, 0)
 
+
+
     adicionalesDiciembre.innerHTML = `
     <div>
-    <h3>En el mes de Diciembre, tu sueldo neto tendrá un adicional de $${adicionalesDic} pesos argentinos.</h3>
+    <h3>En el mes de Diciembre, tu sueldo neto tendrá un adicional de $${adicionalesDic} pesos argentinos conformados por:</h3>
     </div>
 `
+function mostrarAdicionales() {
+    let lista = document.getElementById("ulListadoDic");
+    adicionales.forEach(function (data) {
+        let linew = document.createElement("li");
+        let contenido = document.createTextNode(data.nombre + ": $" + data.monto);
+        lista.appendChild(linew);
+        linew.appendChild(contenido);
+
+    })
+}
+
+mostrarAdicionales();
 
 }
 

@@ -40,6 +40,8 @@
 
         <div id="sueldoNeto"></div>
 
+        <div id="ulListado"></div>
+
         <button class="btn btn-primary" id="mostrarMasInfo" class="buttonMostrarInfo">Mostrar más Información</button>
 
         <div id="masInfo" class="hidden">
@@ -72,19 +74,25 @@
         <h2>Calcular Sueldo Adicional a percibir en el mes de Diciembre del 2022</h2>
         <button class="btn btn-primary" onclick="calcularAdicionalesDic()">Calcular Adicionales en Diciembre</button>
         <div id="adicionalesDiciembre"></div>
+        <div id="ulListadoDic"></div>
     </div>
+
+    
+
 
     <div id="calcularAguinaldoActual">
         <h2>Calcular el Sueldo Anual Complementario y SAC proporcional 2022</h2>
-        <button class="btn btn-primary" onclick="calcularAguinaldoActual()">Calcular Aguinaldo con Sueldo Neto Actual</button>
+        <button class="btn btn-primary" onclick="calcularAguinaldoActual()">Calcular Aguinaldo con Sueldo Neto
+            Actual</button>
         <div id="aguinaldoActualFinal"></div>
     </div>
-    
+
 
 
     <div id="calcularAguinaldo">
         <div class="input-group mb-3">
-            <h3>Si tu Sueldo Neto será diferente al actual, ingresá el monto neto sin tener en cuenta los adicionales que percibirás:</h3>
+            <h3>Si tu Sueldo Neto será diferente al actual, ingresá el monto neto sin tener en cuenta los adicionales
+                que percibirás:</h3>
             <span class="input-group-text">$</span>
             <input type="text" class="form-control" aria-label="Amount" id="aguinaldo">
         </div>
