@@ -26,13 +26,13 @@
 
 
         <div class="input-group mb-3">
-            <h3>En caso de que estes afiliado a un sindicato, ingresa la palabra "si". En el caso de que no estes
-                afiliado o estes fuera de convenio, ingresá la palabra "no".</h3>
-            <input type="text" class="form-control" aria-label="Amount" id="sindicato">
-        </div>
-        <div>
-            <h3>Si tu respuesta fue "si", por favor, ingresá el porcentaje que aportas.</h3>
-            <input type="text" class="form-control" aria-label="Amount" id="sindicatoPorcentaje">
+            <h3>¿Estas afiliado a tu Sindicato?</h3>
+            <label><input type="radio" name="descuento" value="Si" required>Si</label>
+            <label><input type="radio" name="descuento" value="No">No</label>
+            <select name="porcentaje" id="sindicatoPorcentaje" onchange="actualizarPorcentaje()">
+                <option value="porcentaje 2" selected="selected">2%</option>
+                <option value="porcentaje 3">3%</option>
+            </select>
         </div>
 
 

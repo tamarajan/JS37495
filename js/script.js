@@ -7,46 +7,41 @@ let calcularNeto = () => {
     let sueldoNeto = document.getElementById("sueldoNeto")
 
 
-    function descuentos(jubilacion, obraSocial, pami, sindicato, sindicatoPorcentaje) {
+    function descuentos(jubilacion, obraSocial, pami, sindicatoPorcentaje) {
 
-        sindicato = document.getElementById("sindicato").value.toLowerCase()
+        const descuento = document.querySelector('input[name="descuento"]:checked') || 'No';
         sindicatoPorcentaje = document.getElementById("sindicatoPorcentaje").value
 
-        switch (sindicato) {
+        function actualizarPorcentaje() {
+            const sindicatoPorcentaje = document.getElementById('sindicatoPorcentaje').value;
 
-            case "no":
-                sindicato = 0;
-                break;
+            switch (sindicatoPorcentaje) {
+                case '2%':
+                    sindicatoPorcentaje = 0.02;
+                    break;
 
-            case "si":
-                switch (sindicatoPorcentaje) {
+                case '3%':
+                    sindicatoPorcentaje = 0.03;
+                    break;
+            }
 
-                    case "2": {
-                        sindicato = 0.02;
-                        break;
-                    }
-
-                    case "3": {
-                        sindicato = 0.03;
-                        break;
-                    }
-                }
-                break;
-
-            default:
-                alert("Por favor, ingresá si o no.");
-                break;
+            return sindicatoPorcentaje;
         }
 
-        return jubilacion + obraSocial + pami + sindicato;
+
+        if (descuento.value == 'Si') {
+            sindicatoPorcentaje = actualizarPorcentaje();
+        } else {
+            sindicatoPorcentaje = 0;
+        }
+
+
+        return jubilacion + obraSocial + pami + sindicatoPorcentaje;
 
     }
 
 
-    let descuentosTotal = descuentos((parseInt(montoBruto) * 0.11), (parseInt(montoBruto) * 0.03), (parseInt(montoBruto) * 0.03), (parseInt(montoBruto) * parseInt(sindicato)));
-
-
-
+    let descuentosTotal = descuentos((parseInt(montoBruto) * 0.11), (parseInt(montoBruto) * 0.03), (parseInt(montoBruto) * 0.03), (parseInt(montoBruto) * parseInt(sindicatoPorcentaje)));
 
 
     let montoNeto = montoBruto - descuentosTotal;
@@ -57,6 +52,7 @@ let calcularNeto = () => {
         <h3>Tu sueldo neto es de $${montoNeto} pesos argentinos. Las retenciones al Sueldo Bruto están conformadas por: </h3>
         </div>
     `
+
 
     let descuentosNeto = [
         {
@@ -73,10 +69,9 @@ let calcularNeto = () => {
         },
         {
             "descuento": "Sindicato",
-            "monto": (montoBruto) * parseInt(sindicato),
+            "monto": (montoBruto) * (sindicatoPorcentaje),
         },
     ]
-
 
     sessionStorage.setItem('descuentos', JSON.stringify(descuentosNeto));
     let descuentosRecuperados = JSON.parse(sessionStorage.getItem('descuentos'));
@@ -89,13 +84,9 @@ let calcularNeto = () => {
             let contenido = document.createTextNode(data.descuento + ": $" + data.monto);
             lista.appendChild(linew);
             linew.appendChild(contenido);
-
         })
     }
-
     mostrarDescuentos();
-
-
 
 
     let sueldoNetoAGuardar = montoNeto;
@@ -139,18 +130,18 @@ let calcularAdicionalesDic = () => {
     <h3>En el mes de Diciembre, tu sueldo neto tendrá un adicional de $${adicionalesDic} pesos argentinos conformados por:</h3>
     </div>
 `
-function mostrarAdicionales() {
-    let lista = document.getElementById("ulListadoDic");
-    adicionales.forEach(function (data) {
-        let linew = document.createElement("li");
-        let contenido = document.createTextNode(data.nombre + ": $" + data.monto);
-        lista.appendChild(linew);
-        linew.appendChild(contenido);
+    function mostrarAdicionales() {
+        let lista = document.getElementById("ulListadoDic");
+        adicionales.forEach(function (data) {
+            let linew = document.createElement("li");
+            let contenido = document.createTextNode(data.nombre + ": $" + data.monto);
+            lista.appendChild(linew);
+            linew.appendChild(contenido);
 
-    })
-}
+        })
+    }
 
-mostrarAdicionales();
+    mostrarAdicionales();
 
 }
 
