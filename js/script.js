@@ -7,8 +7,8 @@ let calcularNeto = () => {
     let sueldoNeto = document.getElementById("sueldoNeto")
     let aportaSindicato, porcentajeAportado;
 
-    aportaSindicato = document.querySelector('input[name="descuentoSindicato"]:checked') || 'No';
-    porcentajeAportado = aportaSindicato == 'Si' ? 0.03 : 0
+    aportaSindicato = document.querySelector('input[name="descuentoSindicato"]:checked').value || 'No';
+    porcentajeAportado = aportaSindicato == 'Si' ? 3 : 0
     let descuentosTotal = (montoBruto * 0.11) + (montoBruto * 0.03) + (montoBruto * 0.03) + montoBruto * porcentajeAportado/100;
 
     
