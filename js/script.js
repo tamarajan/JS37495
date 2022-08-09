@@ -5,45 +5,13 @@ let calcularNeto = () => {
 
     let montoBruto = document.getElementById("montoBruto").value
     let sueldoNeto = document.getElementById("sueldoNeto")
+    let aportaSindicato, porcentajeAportado;
 
+    aportaSindicato = document.querySelector('input[name="descuentoSindicato"]:checked') || 'No';
+    porcentajeAportado = aportaSindicato == 'Si' ? 0.03 : 0
+    let descuentosTotal = (montoBruto * 0.11) + (montoBruto * 0.03) + (montoBruto * 0.03) + montoBruto * porcentajeAportado/100;
 
-    function descuentos(jubilacion, obraSocial, pami, sindicatoPorcentaje) {
-
-        const descuento = document.querySelector('input[name="descuento"]:checked') || 'No';
-        sindicatoPorcentaje = document.getElementById("sindicatoPorcentaje").value
-
-        function actualizarPorcentaje() {
-            const sindicatoPorcentaje = document.getElementById('sindicatoPorcentaje').value;
-
-            switch (sindicatoPorcentaje) {
-                case '2%':
-                    sindicatoPorcentaje = 0.02;
-                    break;
-
-                case '3%':
-                    sindicatoPorcentaje = 0.03;
-                    break;
-            }
-
-            return sindicatoPorcentaje;
-        }
-
-
-        if (descuento.value == 'Si') {
-            sindicatoPorcentaje = actualizarPorcentaje();
-        } else {
-            sindicatoPorcentaje = 0;
-        }
-
-
-        return jubilacion + obraSocial + pami + sindicatoPorcentaje;
-
-    }
-
-
-    let descuentosTotal = descuentos((parseInt(montoBruto) * 0.11), (parseInt(montoBruto) * 0.03), (parseInt(montoBruto) * 0.03), (parseInt(montoBruto) * parseInt(sindicatoPorcentaje)));
-
-
+    
     let montoNeto = montoBruto - descuentosTotal;
 
 
@@ -69,7 +37,7 @@ let calcularNeto = () => {
         },
         {
             "descuento": "Sindicato",
-            "monto": (montoBruto) * (sindicatoPorcentaje),
+            "monto": montoBruto * porcentajeAportado/100,
         },
     ]
 
