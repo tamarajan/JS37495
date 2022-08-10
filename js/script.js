@@ -171,13 +171,13 @@ btnCalcular.addEventListener('click', () => {
     let diasVacaciones = mesesIngreso >= 6 ? 14 : diasVacacionesHabil
 
     if (mesesIngreso >= 6) {
-        calcularVacaciones.innerHTML = `
+        vacacionesFinal.innerHTML = `
     <div>
     <h3>Han pasado ${mesesIngreso} meses desde tu ingreso. Por lo tanto, te corresponden ${diasVacaciones} días de Vacaciones pagas.</h3>
     </div>
 `
     } else {
-        calcularVacaciones.innerHTML = `
+        vacacionesFinal.innerHTML = `
     <div>
     <h3>Ha/n pasado ${mesesIngreso} mes/es desde tu ingreso. Por lo tanto, te corresponden ${diasVacacionesHabil}</h3>
     </div>
