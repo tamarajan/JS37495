@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <title>Entrega Jan - Operadores</title>
+    <title>Entrega Jan - Librerías</title>
 </head>
 
 <body>
@@ -98,8 +98,25 @@
         <div id="aguinaldoFinal"></div>
     </div>
 
+    <div id="calcularVacaciones" contenteditable="true">
+        <h2>Calcular días correspondientes de Vacaciones</h2>
+        <div class="p-3">
+            <label contenteditable="true" for="fechaIngreso">Fecha de Ingreso:</label>
+            <input type="date" id="fechaIngreso" name="fechaIngreso" value="" min="" max="" contenteditable="true">
+        </div>
+        <div class="p-3">
+            <label contenteditable="true" for="fechaVacaciones">Fecha a tomar Vacaciones:</label>
+            <input type="date" id="fechaVacaciones" name="fechaVacaciones" value="" min="" max="" contenteditable="true">
+        </div>
+        <div class="p-3">
+            <input type="button" class="btn btn-primary" value="Calcular Vacaciones" id="calcular">
+        </div>
+    </div>
+
+
+
     <footer>
-        <h3>Tamara Jan - Operadores</h3>
+        <h3>Tamara Jan - Librerías</h3>
     </footer>
 
 
@@ -107,7 +124,7 @@
 
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.1/build/global/luxon.min.js"></script>
     <script src="./js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"

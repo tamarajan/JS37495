@@ -9,9 +9,9 @@ let calcularNeto = () => {
 
     aportaSindicato = document.querySelector('input[name="descuentoSindicato"]:checked').value || 'No';
     porcentajeAportado = aportaSindicato == 'Si' ? 3 : 0
-    let descuentosTotal = (montoBruto * 0.11) + (montoBruto * 0.03) + (montoBruto * 0.03) + montoBruto * porcentajeAportado/100;
+    let descuentosTotal = (montoBruto * 0.11) + (montoBruto * 0.03) + (montoBruto * 0.03) + montoBruto * porcentajeAportado / 100;
 
-    
+
     let montoNeto = montoBruto - descuentosTotal;
 
 
@@ -37,13 +37,12 @@ let calcularNeto = () => {
         },
         {
             "descuento": "Sindicato",
-            "monto": montoBruto * porcentajeAportado/100,
+            "monto": montoBruto * porcentajeAportado / 100,
         },
     ]
 
     sessionStorage.setItem('descuentos', JSON.stringify(descuentosNeto));
     let descuentosRecuperados = JSON.parse(sessionStorage.getItem('descuentos'));
-    console.log(descuentosRecuperados);
 
     function mostrarDescuentos() {
         let lista = document.getElementById("ulListado");
@@ -144,3 +143,45 @@ let calcularAguinaldo = () => {
 }
 
 
+const DateTime = luxon.DateTime;
+
+const btnCalcular = document.getElementById('calcular');
+
+window.onload = () => {
+    let fechas = document.querySelectorAll('input[type="date"]');
+    let fechaIngreso = DateTime.now().toFormat('yyyy-MM-dd');
+    let fechaVacaciones = DateTime.now().toFormat('yyyy-MM-dd');
+
+
+}
+
+
+function calcularMesesIngreso(ingreso, vacaciones) {
+    let totalMeses = vacaciones.diff(ingreso);
+    return totalMeses.as('months');
+
+}
+
+
+btnCalcular.addEventListener('click', () => {
+    let ingreso = DateTime.fromISO(document.getElementById('fechaIngreso').value);
+    let vacaciones = DateTime.fromISO(document.getElementById('fechaVacaciones').value);
+    let mesesIngreso = parseInt(calcularMesesIngreso(ingreso, vacaciones));
+    let diasVacacionesHabil = '1 día de vacaciones por cada 20 días de trabajo efectivo (días hábiles).';
+    let diasVacaciones = mesesIngreso >= 6 ? 14 : diasVacacionesHabil
+
+    if (mesesIngreso >= 6) {
+        calcularVacaciones.innerHTML = `
+    <div>
+    <h3>Han pasado ${mesesIngreso} meses desde tu ingreso. Por lo tanto, te corresponden ${diasVacaciones} días de Vacaciones pagas.</h3>
+    </div>
+`
+    } else {
+        calcularVacaciones.innerHTML = `
+    <div>
+    <h3>Ha/n pasado ${mesesIngreso} mes/es desde tu ingreso. Por lo tanto, te corresponden ${diasVacacionesHabil}</h3>
+    </div>
+`
+    }
+
+})
