@@ -1,4 +1,8 @@
 
+function valorSindicato() {
+    let seleccion = document.getElementById('selectSindicato').value == '2' ? 2  : 3
+    return seleccion;
+}
 
 
 let calcularNeto = () => {
@@ -7,8 +11,10 @@ let calcularNeto = () => {
     let sueldoNeto = document.getElementById("sueldoNeto")
     let aportaSindicato, porcentajeAportado;
 
+
+
     aportaSindicato = document.querySelector('input[name="descuentoSindicato"]:checked').value || 'No';
-    porcentajeAportado = aportaSindicato == 'Si' ? 3 : 0
+    porcentajeAportado = aportaSindicato == 'Si' ? (document.getElementById('selectSindicato').value == '2' ? 2  : 3) : 0
     let descuentosTotal = (montoBruto * 0.11) + (montoBruto * 0.03) + (montoBruto * 0.03) + montoBruto * porcentajeAportado / 100;
 
 
