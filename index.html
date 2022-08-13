@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <title>Entrega Jan - Librerías</title>
+    <title>Entrega Jan - Fetch</title>
 </head>
 
 <body>
@@ -73,13 +73,20 @@
 
 
     <div id="calcularAdicionales">
-        <h2>Calcular Sueldo Adicional a percibir en el mes de Diciembre del 2022</h2>
+
+        <h2>Calcular Sueldo a percibir por Adicionales</h2>
+
+        <div id="adicionales"></div>
+    
+
+        <button id="calcularAdicionalesButton">Calcular Adicionales</button>
+
+        <!-- <h2>Calcular Sueldo Adicional a percibir en el mes de Diciembre del 2022</h2>
         <button class="btn btn-primary" onclick="calcularAdicionalesDic()">Calcular Adicionales en Diciembre</button>
         <div id="adicionalesDiciembre"></div>
-        <div id="ulListadoDic"></div>
+        <div id="ulListadoDic"></div> -->
     </div>
 
-    
 
 
     <div id="calcularAguinaldoActual">
@@ -123,7 +130,7 @@
 
 
     <footer>
-        <h3>Tamara Jan - Librerías</h3>
+        <h3>Tamara Jan - Fetch</h3>
     </footer>
 
 
@@ -132,6 +139,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.1/build/global/luxon.min.js"></script>
+    <script src="./js/data.json"></script>
     <script src="./js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"

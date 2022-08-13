@@ -1,6 +1,6 @@
 
 function valorSindicato() {
-    let seleccion = document.getElementById('selectSindicato').value == '2' ? 2  : 3
+    let seleccion = document.getElementById('selectSindicato').value == '2' ? 2 : 3
     return seleccion;
 }
 
@@ -14,7 +14,7 @@ let calcularNeto = () => {
 
 
     aportaSindicato = document.querySelector('input[name="descuentoSindicato"]:checked').value || 'No';
-    porcentajeAportado = aportaSindicato == 'Si' ? (document.getElementById('selectSindicato').value == '2' ? 2  : 3) : 0
+    porcentajeAportado = aportaSindicato == 'Si' ? (document.getElementById('selectSindicato').value == '2' ? 2 : 3) : 0
     let descuentosTotal = (montoBruto * 0.11) + (montoBruto * 0.03) + (montoBruto * 0.03) + montoBruto * porcentajeAportado / 100;
 
 
@@ -82,7 +82,49 @@ function mostrarInformación(event) {
         : "Ocultar la información";
 }
 
+async function bringData() {
+    const response = await fetch('./js/data.json');
+    const data = await response.json();
+    console.log(data);
+    crearHTML(data);
+}
 
+window.onload = bringData();
+
+const container = document.querySelector('#adicionales');
+
+
+function crearHTML(array) {
+
+    array.forEach((adicional) => {
+        const checkbox = `
+        <input type="checkbox">
+        <label for="nombre">${adicional.nombre}: $${adicional.monto}</label>
+        </br>
+        `;
+
+        container.innerHTML += checkbox;
+    })
+}
+
+
+calcularAdicionalesButton.addEventListener('click', () => {
+    //Agregar funcion de calcular extras según checkboxs seleccionados
+    /*
+document.getElementById('submit').onclick = function() {
+    if (document.getElementById('male').checked) {
+        alert(document.getElementById('male').value);
+    }
+    else if (document.getElementById('female').checked) {
+        alert(document.getElementById('female').value);
+    }
+}
+*/
+})
+
+
+
+/*
 let calcularAdicionalesDic = () => {
 
     const adicionales = [
@@ -117,6 +159,12 @@ let calcularAdicionalesDic = () => {
     mostrarAdicionales();
 
 }
+
+*/
+
+
+
+
 
 
 let calcularAguinaldoActual = () => {
