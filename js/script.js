@@ -94,33 +94,39 @@ window.onload = bringData();
 const container = document.querySelector('#adicionales');
 
 
-function crearHTML(array) {
+let crearHTML = (array) => {
 
     array.forEach((adicional) => {
         const checkbox = `
-        <input type="checkbox">
+        <input type="checkbox" id="checkbox">
         <label for="nombre">${adicional.nombre}: $${adicional.monto}</label>
         </br>
         `;
 
         container.innerHTML += checkbox;
+
+
     })
+
+    
 }
 
 
-calcularAdicionalesButton.addEventListener('click', () => {
-    //Agregar funcion de calcular extras según checkboxs seleccionados
-    /*
-document.getElementById('submit').onclick = function() {
-    if (document.getElementById('male').checked) {
-        alert(document.getElementById('male').value);
+
+function calcularAdicionales() {
+        
+    if (('input[id="checkbox"]:checked').value) {
+        return bringData(adicional.monto);
+    } else {
+        return 0;
     }
-    else if (document.getElementById('female').checked) {
-        alert(document.getElementById('female').value);
-    }
+
 }
-*/
-})
+adicionalesTotal.innerHTML = `
+    <div>
+    <h3>Tu sueldo neto tendrá un adicional de $${bringData(adicional.monto)}} pesos argentinos.</h3>
+    </div>
+`
 
 
 
