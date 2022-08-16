@@ -82,8 +82,15 @@ function mostrarInformación(event) {
         : "Ocultar la información";
 }
 
+/*
 async function bringData() {
-    const response = await fetch('./js/data.json');
+    const response = await fetch('./js/data.json', {
+        'mode': 'no-cors',
+        'headers': {
+            'Access-Control-Allow-Origin': '*',
+        }
+    }
+    );
     const data = await response.json();
     console.log(data);
     crearHTML(data);
@@ -102,19 +109,13 @@ let crearHTML = (array) => {
         <label for="nombre">${adicional.nombre}: $${adicional.monto}</label>
         </br>
         `;
-
         container.innerHTML += checkbox;
-
-
     })
-
-    
 }
 
 
-
 function calcularAdicionales() {
-        
+
     if (('input[id="checkbox"]:checked').value) {
         return bringData(adicional.monto);
     } else {
@@ -122,15 +123,19 @@ function calcularAdicionales() {
     }
 
 }
+
+let adicional = calcularAdicionales();
+console.log(adicional);
+
 adicionalesTotal.innerHTML = `
     <div>
-    <h3>Tu sueldo neto tendrá un adicional de $${bringData(adicional.monto)}} pesos argentinos.</h3>
+    <h3>Tu sueldo neto tendrá un adicional de $${adicional} pesos argentinos.</h3>
     </div>
 `
 
 
 
-/*
+
 let calcularAdicionalesDic = () => {
 
     const adicionales = [
@@ -167,7 +172,6 @@ let calcularAdicionalesDic = () => {
 }
 
 */
-
 
 
 
@@ -244,4 +248,40 @@ btnCalcular.addEventListener('click', () => {
 `
     }
 
+})
+
+fetch('https://holidayapi.com/v1/holidays?pretty&key=242bf3a6-0141-4c7b-b1fe-d2a2e50d9ae9&country=AR&year=2021')
+.then((response) => response.json())
+.then((data) => console.log(data));
+
+const contenedor = document.querySelector('#contenedorTarjetas');
+const container = document.querySelector('#cardContainer');
+const btnBuscar = document.querySelector('#buscar');
+
+
+
+let crearHTML = (array) =>  {
+    contenedor.innerHTML = '';
+    container.innerHTML = '';
+    array.forEach((holidays) => {
+        const tarjeta = `
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Nombre: ${holidays.name}</h5>
+                        <p class="card-text">Fecha: ${holidays.date}</p>
+                        <p class="card-text">Día de la Semana: ${holidays.weekday}</p>
+                    </div>
+                </div>
+            </div>`;
+        contenedor.innerHTML += tarjeta;
+    })
+}
+
+btnBuscar.addEventListener('click', () => {
+    fetch('https://holidayapi.com/v1/holidays?pretty&key=242bf3a6-0141-4c7b-b1fe-d2a2e50d9ae9&country=AR&year=2021')
+        .then((response) => response.json())
+        .then((data) => {
+            crearHTML((data));
+        })
 })
