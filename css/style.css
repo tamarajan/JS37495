@@ -98,6 +98,18 @@ footer h3 {
     background-color:rgb(158, 136, 185);
 }
 
+#calcularVacaciones .btn-primary {
+    background-color:rgb(192, 180, 207);
+    border-color: rgb(158, 136, 185);
+    font-weight: 500;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#calcularVacaciones .btn-primary:hover {
+    background-color:rgb(158, 136, 185);
+}
+
 
 .hidden { 
     display: none; 

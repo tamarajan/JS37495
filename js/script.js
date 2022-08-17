@@ -82,15 +82,9 @@ function mostrarInformación(event) {
         : "Ocultar la información";
 }
 
-/*
+
 async function bringData() {
-    const response = await fetch('./js/data.json', {
-        'mode': 'no-cors',
-        'headers': {
-            'Access-Control-Allow-Origin': '*',
-        }
-    }
-    );
+    const response = await fetch('./js/data.json');
     const data = await response.json();
     console.log(data);
     crearHTML(data);
@@ -114,27 +108,51 @@ let crearHTML = (array) => {
 }
 
 
+let eventcheck = document.querySelector('input[id="checkbox"]');
+
+eventcheck.addEventListener( 'change', function() {
+    if(this.checked) {
+        return (bringData(adicional.monto));
+    } else {
+        return 0;
+    } 
+});
+
+
+
+adicionalesTotal.innerHTML = `
+        <div>
+        <h3>Tu sueldo neto tendrá un adicional de $${bringData(adicional.monto)} pesos argentinos.</h3>
+        </div>
+        `;
+
+        
+/*
 function calcularAdicionales() {
 
     if (('input[id="checkbox"]:checked').value) {
-        return bringData(adicional.monto);
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function calcularAdicionalesTotal() {
+
+    if (calcularAdicionales === true) {
+        return (bringData(adicional.monto));
     } else {
         return 0;
     }
-
 }
 
-let adicional = calcularAdicionales();
+
+let adicional = calcularAdicionalesTotal();
 console.log(adicional);
-
-adicionalesTotal.innerHTML = `
-    <div>
-    <h3>Tu sueldo neto tendrá un adicional de $${adicional} pesos argentinos.</h3>
-    </div>
-`
+*/
 
 
-
+/*
 
 let calcularAdicionalesDic = () => {
 
@@ -254,13 +272,14 @@ fetch('https://holidayapi.com/v1/holidays?pretty&key=242bf3a6-0141-4c7b-b1fe-d2a
 .then((response) => response.json())
 .then((data) => console.log(data));
 
+/*
 const contenedor = document.querySelector('#contenedorTarjetas');
 const container = document.querySelector('#cardContainer');
 const btnBuscar = document.querySelector('#buscar');
 
 
 
-let crearHTML = (array) =>  {
+let crearHTMLAPI = (array) =>  {
     contenedor.innerHTML = '';
     container.innerHTML = '';
     array.forEach((holidays) => {
@@ -282,6 +301,7 @@ btnBuscar.addEventListener('click', () => {
     fetch('https://holidayapi.com/v1/holidays?pretty&key=242bf3a6-0141-4c7b-b1fe-d2a2e50d9ae9&country=AR&year=2021')
         .then((response) => response.json())
         .then((data) => {
-            crearHTML((data));
+            crearHTMLAPI((data));
         })
 })
+*/
