@@ -88,7 +88,6 @@ async function bringData() {
     const data = await response.json();
     console.log(data);
     crearHTML(data);
-    handleChange(checkbox);
 }
 
 window.onload = bringData();
@@ -99,7 +98,7 @@ const container = document.querySelector('#adicionales');
 let crearHTML = (array) => {
     array.forEach((adicional) => {
         const checkbox = `
-        <input type="checkbox" id="checkbox" onchange='handleChange(this);'>
+        <input type="checkbox" id="checkbox" onchange="calcularAdicionales();">
         <label for="nombre">${adicional.nombre}: $${adicional.monto}</label>
         </br>
         `;
@@ -108,26 +107,23 @@ let crearHTML = (array) => {
 }
 
 
-
-
-function handleChange(checkbox) {
-    if(checkbox.checked == true){
-        return (bringData()); //Acá quiero que me devuelva adicional.monto pero me dice que no está definido
+let calcularAdicionales = () => {
+    if('input[type="checkbox" id="checkbox onchange="calcularAdicionales();"]:checked'.value === true) {
+        return (adicional.monto); 
     }else{
         return 0;
     }
+
+    
 }
 
-console.log(handleChange());
 
 adicionalesTotal.innerHTML = `
         <div>
-        <h3>Tu sueldo neto tendrá un adicional de $ pesos argentinos.</h3>
+        <h3>Tu sueldo neto tendrá un adicional de $${calcularAdicionales()} pesos argentinos.</h3>
         </div>
         `
 
-
-//function calcularAdicionales()
 
 /*
 
