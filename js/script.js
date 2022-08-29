@@ -161,22 +161,23 @@ btnCalcular.addEventListener('click', () => {
 })
 
 
-fetch('https://holidayapi.com/v1/holidays?pretty&key=242bf3a6-0141-4c7b-b1fe-d2a2e50d9ae9&country=AR&year=2021')
-.then((response) => response.json())
-.then((data) => console.log(data));
-
 
 const listaFeriados = async () => {
-    const response = await fetch("https://holidayapi.com/v1/holidays?pretty&key=242bf3a6-0141-4c7b-b1fe-d2a2e50d9ae9&country=AR&year=2021");
-    const array = await response.json();
+
+    const response = await fetch("https://holidayapi.com/v1/holidays?pretty&key=242bf3a6-0141-4c7b-b1fe-d2a2e50d9ae9&country=AR&year=2021&language=es");
+    const respuesta = await response.json();
+    const holidays = respuesta.holidays;
+    console.log(holidays);
 
     let listaHolidays = ``;
-    Array.from(array).forEach((holidays) => {
+    holidays.forEach((holiday) => {
         listaHolidays += `
-        <h3>${holidays.name}</h3>
-        <h3>${holidays.date}</h3>
-        <h3>${holidays.weekday.date.name}</h3>
-        `;
+        <h2>Festividad: ${holiday.name}</h2>
+        <h2>Fecha: ${holiday.date}</h2>
+        <h2>Día de la Semana: ${holiday.weekday.date.name}</h2>`;
     });
+    let feriados = document.getElementById('feriados')
     feriados.innerHTML = listaHolidays;
 };
+
+listaFeriados();
