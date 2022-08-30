@@ -1,140 +1,211 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>DeBolsillo - Calculadora de Sueldo</title>
+        <link rel="icon" type="image/x-icon" href="images/DeBolsillo-favicon.png" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <header class="masthead">
+            <div class="container position-relative">
+                <div class="row justify-content-right">
+                    <div class="col-xl-6">
+                        <div class="text-right text-white">
+                            <h1 class="mb-5">Calculá tu sueldo neto de forma fácil, rápida y segura.</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <title>Entrega Jan - Fetch</title>
-</head>
-
-<body>
-
-    <h1>Calculadora de Sueldo</h1>
-
-    <div id="calcularNeto">
-        <h2>Calcular Sueldo Neto</h2>
-        <h3>Ingresa tu Sueldo Bruto:</h3>
-
-        <div class="input-group mb-3">
-            <span class="input-group-text">$</span>
-            <input type="text" class="form-control" aria-label="Amount" id="montoBruto">
-        </div>
-
-
-        <div class="input-group mb-3">
-            <h3>¿Estas afiliado a tu Sindicato?</h3>
-            <label><input type="radio" name="descuentoSindicato" value="No">No</label>
-            <label><input type="radio" name="descuentoSindicato" value="Si" required>Si</label>
-        </div>
-
-        <select id="selectSindicato" onchange="valorSindicato()">
-            <option value="">Porcentaje Aportado</option>
-            <option value="2">2%</option>
-            <option value="3">3%</option>
-        </select>
-
-
-        <button class="btn btn-primary" onclick="calcularNeto()">Calcular Sueldo Neto</button>
-
-        <div id="sueldoNeto"></div>
-
-        <div id="ulListado"></div>
-
-        <button class="btn btn-primary" id="mostrarMasInfo" class="buttonMostrarInfo">Mostrar más Información</button>
-
-        <div id="masInfo" class="hidden">
-            <p>Sueldo Bruto: El sueldo bruto es el dinero total que percibe un trabajador por el trabajo que desempeña
-                antes que al mismo se le efecten las correspondientes retenciones (descuentos).
-            </p>
-            <p>Jubilación: La Jubilacion es el pago mensual de una suma de dinero que el Estado paga a las personas que
-                han concluido su ciclo laboral. Los aportes por este motivo son del 11% del salario bruto y se
-                transfieren a la ANSeS.</p>
-            <p>Obra Social: Las obras sociales son entidades encargadas de organizar la prestación de la atención médica
-                de los trabajadores. Los aportes por este motivo son del 3% del salario bruto y se transfieren a la obra
-                social elegida por el trabajador.</p>
-            <p>PAMI: La ley 19032, es la Ley por la cual se crea el Instituto Nacional de Servicios Sociales para
-                Jubilados y Pensionados (creación del PAMI). Es un descuento que se realiza a los trabajadores activos
-                para brindarle asistencia social y salud a los jubilados y pensionados. Los aportes por este motivo son
-                del 3% del salario bruto y se transfieren a PAMI.</p>
-            <p>Sindicato: Un sindicato es una asociación integrada por trabajadores en defensa y promoción de sus
-                intereses sociales, económicos y profesionales. El aporte al sindicato (generalmente del 1% al 3% del
-                sueldo bruto) es voluntario para quienes decidan afiliarse a su sindicato de actividad.</p>
-        </div>
+        <section class="features-icons bg-light text-center">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4"> <a href="#calcularNeto">
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <img class="iconos" src="images/icono-neto.svg">
+                            <h3>Calcular Sueldo Neto</h3>
+                            <p class="lead mb-0">El sueldo neto es el dinero total que percibe un trabajador 'de bolsillo' por el trabajo que desempeña luego de que al mismo se le efectúen las correspondientes retenciones (descuentos).</p>
+                        </div>
+                    </a></div>
+                    <div class="col-lg-4"> <a href="#calcularAguinaldoActual">
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <img class="iconos" src="images/icono-sac.svg">
+                            <h3>Calcular SAC</h3>
+                            <p class="lead mb-0">El Sueldo Anual Complementario (SAC) o Aguinaldo en Argentina es una remuneración adicional a las 12 que percibe por año, y se paga en dos cuotas en determinadas épocas del año.
+                            </p>
+                        </div>
+                    </a></div>
+                    <div class="col-lg-4"> <a href="#calcularVacaciones">
+                        <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                            <img class="iconos" src="images/icono-vacaciones.svg">
+                            <h3>Calcular Vacaciones</h3>
+                            <p class="lead mb-0">Esta calculadora te permitirá calcular cuantos días de vacaciones te corresponden según tu antigüedad en un trabajo.
+                            </p>
+                        </div>
+                    </a></div>
+                </div>
+            </div>
+        </section>
 
 
+        <section class="showcase" >
+            <div class="container-fluid p-0">
 
+                <div class="row g-0" id="calcularNeto">
+                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('images/neto.svg')"></div>
+                    <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                        <h2>Calcular Sueldo Neto</h2>
+                        <p class="lead mb-0">Ingresa tu Sueldo Bruto:</p>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">$</span>
+                            <input type="text" class="form-control" aria-label="Amount" id="montoBruto">
+                        </div>
+                
+                        <div class="input-group-radio mb-3">
+                            <p class="lead mb-0">¿Estas afiliado al Sindicato?</p>
+                            <input class="radio" type="radio" name="descuentoSindicato" value="No"><label class="lead">No</label>
+                            <input class="radio" type="radio" name="descuentoSindicato" value="Si" required><label class="lead">Si</label>
+                            <p class="lead mb-0">Si lo estas, por favor, indicá el porcentaje aportado:</p>
+                        </div>
+                
+                        <select class="form-select" id="selectSindicato" onchange="valorSindicato()">
+                            <option value="">Porcentaje Aportado</option>
+                            <option value="2">2%</option>
+                            <option value="3">3%</option>
+                        </select>
+                
+                
+                        <button class="btn btn-primary" onclick="calcularNeto()">Calcular Sueldo Neto</button>
+                
+                        <div id="sueldoNeto"></div>
+                
+                        <div id="ulListado"></div>
 
+                        <button class="btn btn-primary" id="mostrarMasInfo" class="buttonMostrarInfo">Mostrar más Información</button>
 
-    </div>
-
-    
-
-
-    <div id="calcularAguinaldoActual">
-        <h2>Calcular el Sueldo Anual Complementario y SAC proporcional 2022</h2>
-        <button class="btn btn-primary" onclick="calcularAguinaldoActual()">Calcular Aguinaldo con Sueldo Neto
-            Actual</button>
-        <div id="aguinaldoActualFinal"></div>
-    </div>
-
-
-
-    <div id="calcularAguinaldo">
-        <div class="input-group mb-3">
-            <h3>Si tu Sueldo Neto será diferente al actual, ingresá el monto neto sin tener en cuenta los adicionales
-                que percibirás:</h3>
-            <span class="input-group-text">$</span>
-            <input type="text" class="form-control" aria-label="Amount" id="aguinaldo">
-        </div>
-
-        <button class="btn btn-primary" onclick="calcularAguinaldo()">Calcular Aguinaldo con Otro Sueldo Neto</button>
-
-        <div id="aguinaldoFinal"></div>
-    </div>
-
-    <div id="calcularVacaciones" contenteditable="true">
-        <h2>Calcular días correspondientes de Vacaciones</h2>
-        <div class="p-3">
-            <label contenteditable="true" for="fechaIngreso">Fecha de Ingreso:</label>
-            <input type="date" id="fechaIngreso" name="fechaIngreso" value="" min="" max="" contenteditable="true">
-        </div>
-        <div class="p-3">
-            <label contenteditable="true" for="fechaVacaciones">Fecha a tomar Vacaciones:</label>
-            <input type="date" id="fechaVacaciones" name="fechaVacaciones" value="" min="" max=""
-                contenteditable="true">
-        </div>
-        <div class="p-3">
-            <input type="button" class="btn btn-primary" value="Calcular Vacaciones" id="calcular">
-        </div>
-        <div id="vacacionesFinal"></div>
-
-        <div id="feriados"></div>
-    </div>
-
-    
-    
-
-
-    <footer>
-        <h3>Tamara Jan - Fetch</h3>
-    </footer>
+                        <div id="masInfo" class="hidden">
+                            <p> <strong>Sueldo Bruto:</strong> El sueldo bruto es el dinero total que percibe un trabajador por el trabajo que desempeña antes que al mismo se le efecten las correspondientes retenciones (descuentos).</p>
+                            <p><strong>Jubilación:</strong> La Jubilacion es el pago mensual de una suma de dinero que el Estado paga a las personas que han concluido su ciclo laboral. Los aportes por este motivo son del 11% del salario bruto y se transfieren a la ANSeS.</p>
+                            <p><strong>Obra Social:</strong> Las obras sociales son entidades encargadas de organizar la prestación de la atención médica de los trabajadores. Los aportes por este motivo son del 3% del salario bruto y se transfieren a la obra social elegida por el trabajador.</p>
+                            <p><strong>PAMI:</strong> La ley 19032, es la Ley por la cual se crea el Instituto Nacional de Servicios Sociales para Jubilados y Pensionados (creación del PAMI). Es un descuento que se realiza a los trabajadores activos para brindarle asistencia social y salud a los jubilados y pensionados. Los aportes por este motivo son del 3% del salario bruto y se transfieren a PAMI.</p>
+                            <p><strong>Sindicato:</strong> Un sindicato es una asociación integrada por trabajadores en defensa y promoción de sus intereses sociales, económicos y profesionales. El aporte al sindicato (generalmente del 1% al 3% del sueldo bruto) es voluntario para quienes decidan afiliarse a su sindicato de actividad.</p>
+                        </div>
+                
+                    </div>
+                </div>
 
 
 
+                <div class="row g-0" id="calcularAguinaldoActual">
+                    <div class="col-lg-6 text-white showcase-img" style="background-image: url('images/sac.svg')"></div>
+                    <div class="col-lg-6 my-auto showcase-text">
+                        <h2>Calcular el Sueldo Anual Complementario (SAC)</h2>
+                        <p class="lead mb-0">Calcular Aguinaldo en base al Sueldo Neto actual</p>
+                        <button class="btn btn-primary" onclick="calcularAguinaldoActual()">Calcular Aguinaldo</button>
+                        <div id="aguinaldoActualFinal"></div>
+
+                        <div id="calcularAguinaldo">
+                            <div class="input-group mb-3">
+                                <p class="lead mb-0">Si deseas calcular el Aguinaldo en base a un Sueldo Neto diferente al actual, ingresá el monto neto (sin tener en cuenta los adicionales que percibirás):</p>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" aria-label="Amount" id="aguinaldo">
+                                </div>
+
+                            </div>
+                    
+                            <button class="btn btn-primary" onclick="calcularAguinaldo()">Calcular Nuevo Aguinaldo</button>
+                    
+                            <div id="aguinaldoFinal"></div>
+                        </div>
+                    </div>
+                </div>
 
 
+                <div class="row g-0" id="calcularVacaciones">
+                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('images/vacaciones.svg')"></div>
+                    <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                        <h2>Calcular Días de Vacaciones</h2>
+                        <p class="lead mb-0">Calcular cuántos días de vacaciones te corresponden según antigüedad en tu trabajo.</p>
 
-    <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.1/build/global/luxon.min.js"></script>
+                        <div class="vacaForm">
+                            <label contenteditable="true" for="fechaIngreso" class="lead">Fecha de Ingreso:</label>
+                            <input type="date" id="fechaIngreso" name="fechaIngreso" value="" min="" max="" contenteditable="true" class="vacaForm">
+                            <label contenteditable="true" for="fechaVacaciones" class="lead">Fecha a tomar Vacaciones:</label>
+                            <input type="date" id="fechaVacaciones" name="fechaVacaciones" value="" min="" max="" contenteditable="true" class="vacaForm">
+                            <input type="button" class="btn btn-primary" value="Calcular Vacaciones" id="calcular">
+                        </div>
+                        <div id="vacacionesFinal"></div>
+                
+                        
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
-    <!--<script src="./js/data.json"></script>-->
-    <script src="./js/script.js"></script>
-</body>
 
+            <div class="row g-0" id="feriados">
+                <div class="col-lg-6 text-white showcase-img" style="background-image: url('images/feriados.svg')"></div>
+                <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                <p class="lead mb-0">Si estas planeando tus Vacaciones, podes ver los feriados aquí:</p>
+                <button class="btn btn-primary" id="mostrarFeriados" class="buttonMostrarFeriados">Mostrar Feriados</button>
+                <div id="masInfoFeriados" class="hidden">
+                    <h2>Enero</h2>
+                    <div id="feriadosEnero"></div>
+                    <h2>Febrero</h2>
+                    <div id="feriadosFebrero"></div>
+                    <h2>Marzo</h2>
+                    <div id="feriadosMarzo"></div>
+                    <h2>Abril</h2>
+                    <div id="feriadosAbril"></div>
+                    <h2>Mayo</h2>
+                    <div id="feriadosMayo"></div>
+                    <h2>Junio</h2>
+                    <div id="feriadosJunio"></div>
+                    <h2>Julio</h2>
+                    <div id="feriadosJulio"></div>
+                    <h2>Agosto</h2>
+                    <div id="feriadosAgosto"></div>
+                    <h2>Septiembre</h2>
+                    <div id="feriadosSeptiembre"></div>
+                    <h2>Octubre</h2>
+                    <div id="feriadosOctubre"></div>
+                    <h2>Noviembre</h2>
+                    <div id="feriadosNoviembre"></div>
+                    <h2>Diciembre</h2>
+                    <div id="feriadosDiciembre"></div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <footer class="footer bg-light">
+            <div class="containerFooter">
+                <div class="row">
+                    <div class="col-lg-12 h-100 text-center text-lg-start my-auto">
+                        <ul class="list-inline mb-2">
+                            <li class="list-inline-item"><a href="index.html"><img class="logoFooter" src="images/DeBolsillo-logo.png"></a></li>
+                            <li class="list-inline-item"><p class="text-muted small mb-4 mb-lg-0">CoderHouse - JavaScript</p></li>
+                            <li class="list-inline-item"><p class="text-muted small mb-4 mb-lg-0">Comisión 37495</p></li>
+                            <li class="list-inline-item"><p class="text-muted small mb-4 mb-lg-0">Tamara Jan</p></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.1/build/global/luxon.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
 </html>
