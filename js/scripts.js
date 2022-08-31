@@ -1,3 +1,5 @@
+
+
 function valorSindicato() {
     let seleccion = document.getElementById('selectSindicato').value == '2' ? 2 : 3
     return seleccion;
@@ -7,6 +9,7 @@ function valorSindicato() {
 let calcularNeto = () => {
 
     let montoBruto = document.getElementById("montoBruto").value
+    let montoAdicionales = document.getElementById("montoAdicionales").value
     let sueldoNeto = document.getElementById("sueldoNeto")
     let aportaSindicato, porcentajeAportado;
 
@@ -15,10 +18,10 @@ let calcularNeto = () => {
     aportaSindicato = document.querySelector('input[name="descuentoSindicato"]:checked').value || 'No';
     porcentajeAportado = aportaSindicato == 'Si' ? (document.getElementById('selectSindicato').value == '2' ? 2 : 3) : 0
     let descuentosTotal = (montoBruto * 0.11) + (montoBruto * 0.03) + (montoBruto * 0.03) + montoBruto * porcentajeAportado / 100;
+    montoAdicionales = (montoAdicionales - 0);
 
-
-    let montoNeto = montoBruto - descuentosTotal;
-
+    let montoNetoSinAdic = montoBruto - descuentosTotal;
+    let montoNeto = montoNetoSinAdic + montoAdicionales;
 
     sueldoNeto.innerHTML = `
         <div>
@@ -61,7 +64,7 @@ let calcularNeto = () => {
     mostrarDescuentos();
 
 
-    let sueldoNetoAGuardar = montoNeto;
+    let sueldoNetoAGuardar = montoNetoSinAdic;
     sessionStorage.setItem('neto', sueldoNetoAGuardar);
 
 
@@ -183,14 +186,13 @@ const listaFeriados = async () => {
     const enero = holidays.filter(
         (item) => {
             const feriadosEnero = new Date(item.date);
-            return feriadosEnero.getMonth() <= 0;
+            return feriadosEnero.getMonth() === 0;
         });
         enero.forEach((holiday) => {
             listaHolidaysEnero += `
-            <div class="col-lg-9">
-            <h2>Enero:</h2>
+            <div class="feriados">
+            <h4>${holiday.date}</h4>
             <p class="lead mb-0">Festividad: ${holiday.name}</p>
-            <p class="lead mb-0">Fecha: ${holiday.date}</p>
             <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
             </div>
             `;
@@ -204,9 +206,9 @@ const listaFeriados = async () => {
         febrero.forEach((holiday) => {
             listaHolidaysFebrero += `
             <div class="feriados">
-            <h2>${holiday.date}</h2>
-            <p class="lead mb-0">Festividad: ${holiday.name}</p>
-            <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
+            <h4>${holiday.date}</h4>
+            <p class="lead mb-0">${holiday.name}</p>
+            <p class="lead mb-0">${holiday.weekday.date.name}</p>
             </div>
             `;
         });
@@ -219,8 +221,8 @@ const listaFeriados = async () => {
         marzo.forEach((holiday) => {
             listaHolidaysMarzo += `
             <div class="feriados">
-            <h2>${holiday.date}</h2>
-            <h3>Festividad: ${holiday.name}</h3>
+            <h4>${holiday.date}</h4>
+            <p class="lead mb-0">Festividad: ${holiday.name}</p>
             <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
             </div>
             `;
@@ -234,7 +236,7 @@ const listaFeriados = async () => {
         abril.forEach((holiday) => {
             listaHolidaysAbril += `
             <div class="feriados">
-            <h2>${holiday.date}</h2>
+            <h4>${holiday.date}</h4>
             <p class="lead mb-0">Festividad: ${holiday.name}</p>
             <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
             </div>
@@ -249,7 +251,7 @@ const listaFeriados = async () => {
         mayo.forEach((holiday) => {
             listaHolidaysMayo += `
             <div class="feriados">
-            <h2>${holiday.date}</h2>
+            <h4>${holiday.date}</h4>
             <p class="lead mb-0">Festividad: ${holiday.name}</p>
             <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
             </div>
@@ -264,7 +266,7 @@ const listaFeriados = async () => {
         junio.forEach((holiday) => {
             listaHolidaysJunio += `
             <div class="feriados">
-            <h2>${holiday.date}</h2>
+            <h4>${holiday.date}</h4>
             <p class="lead mb-0">Festividad: ${holiday.name}</p>
             <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
             </div>
@@ -279,7 +281,7 @@ const listaFeriados = async () => {
         julio.forEach((holiday) => {
             listaHolidaysJulio += `
             <div class="feriados">
-            <h2>${holiday.date}</h2>
+            <h4>${holiday.date}</h4>
             <p class="lead mb-0">Festividad: ${holiday.name}</p>
             <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
             </div>
@@ -294,7 +296,7 @@ const listaFeriados = async () => {
         agosto.forEach((holiday) => {
             listaHolidaysAgosto += `
             <div class="feriados">
-            <h2>${holiday.date}</h2>
+            <h4>${holiday.date}</h4>
             <p class="lead mb-0">Festividad: ${holiday.name}</p>
             <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
             </div>
@@ -309,7 +311,7 @@ const listaFeriados = async () => {
         septiembre.forEach((holiday) => {
             listaHolidaysSeptiembre += `
             <div class="feriados">
-            <h2>${holiday.date}</h2>
+            <h4>${holiday.date}</h4>
             <p class="lead mb-0">Festividad: ${holiday.name}</p>
             <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
             </div>
@@ -324,7 +326,7 @@ const listaFeriados = async () => {
         octubre.forEach((holiday) => {
             listaHolidaysOctubre += `
             <div class="feriados">
-            <h2>${holiday.date}</h2>
+            <h4>${holiday.date}</h4>
             <p class="lead mb-0">Festividad: ${holiday.name}</p>
             <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
             </div>
@@ -339,7 +341,7 @@ const listaFeriados = async () => {
         noviembre.forEach((holiday) => {
             listaHolidaysNoviembre += `
             <div class="feriados">
-            <h2>${holiday.date}</h2>
+            <h4>${holiday.date}</h4>
             <p class="lead mb-0">Festividad: ${holiday.name}</p>
             <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
             </div>
@@ -354,7 +356,7 @@ const listaFeriados = async () => {
         diciembre.forEach((holiday) => {
             listaHolidaysDiciembre += `
             <div class="feriados">
-            <h2>${holiday.date}</h2>
+            <h4>${holiday.date}</h4>
             <p class="lead mb-0">Festividad: ${holiday.name}</p>
             <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
             </div>

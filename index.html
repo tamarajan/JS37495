@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta name="keywords" content="sueldo, bruto, neto, remuneración, retenciones, vacaciones, calculadora, calcular, sac, feriados"/>
+        <meta name="description" content="En DeBolsillo podes calcular tu sueldo neto de forma fácil, rápida y segura."/>
+        <meta name="author" content="Tamara Jan"/>
         <title>DeBolsillo - Calculadora de Sueldo</title>
-        <link rel="icon" type="image/x-icon" href="images/DeBolsillo-favicon.png" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link rel="icon" type="image/x-icon" href="images/DeBolsillo-favicon.png"/>
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"/>
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
@@ -61,7 +62,7 @@
                     <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('images/neto.svg')"></div>
                     <div class="col-lg-6 order-lg-1 my-auto showcase-text">
                         <h2>Calcular Sueldo Neto</h2>
-                        <p class="lead mb-0">Ingresa tu Sueldo Bruto:</p>
+                        <p class="lead mb-0">Ingresá tu Sueldo Bruto:</p>
                         <div class="input-group mb-3">
                             <span class="input-group-text">$</span>
                             <input type="text" class="form-control" aria-label="Amount" id="montoBruto">
@@ -80,6 +81,11 @@
                             <option value="3">3%</option>
                         </select>
                 
+                        <p class="lead mb-0">En caso de percibir Remuneraciones Adicionales tales como Antigüedad, Viáticos, Presentismo, Título de Grado, etc., ingresá el total:</p>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">$</span>
+                            <input type="text" class="form-control" aria-label="Amount" id="montoAdicionales">
+                        </div>
                 
                         <button class="btn btn-primary" onclick="calcularNeto()">Calcular Sueldo Neto</button>
                 
@@ -151,39 +157,41 @@
                 
             </div>
 
-
+            <div class="container-fluid">
             <div class="row g-0" id="feriados">
                 <div class="col-lg-6 text-white showcase-img" style="background-image: url('images/feriados.svg')"></div>
                 <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                <h2>Calcular Feriados</h2>
                 <p class="lead mb-0">Si estas planeando tus Vacaciones, podes ver los feriados aquí:</p>
                 <button class="btn btn-primary" id="mostrarFeriados" class="buttonMostrarFeriados">Mostrar Feriados</button>
                 <div id="masInfoFeriados" class="hidden">
-                    <h2>Enero</h2>
+                    <h3>Enero</h3>
                     <div id="feriadosEnero"></div>
-                    <h2>Febrero</h2>
+                    <h3>Febrero</h3>
                     <div id="feriadosFebrero"></div>
-                    <h2>Marzo</h2>
+                    <h3>Marzo</h3>
                     <div id="feriadosMarzo"></div>
-                    <h2>Abril</h2>
+                    <h3>Abril</h3>
                     <div id="feriadosAbril"></div>
-                    <h2>Mayo</h2>
+                    <h3>Mayo</h3>
                     <div id="feriadosMayo"></div>
-                    <h2>Junio</h2>
+                    <h3>Junio</h3>
                     <div id="feriadosJunio"></div>
-                    <h2>Julio</h2>
+                    <h3>Julio</h3>
                     <div id="feriadosJulio"></div>
-                    <h2>Agosto</h2>
+                    <h3>Agosto</h3>
                     <div id="feriadosAgosto"></div>
-                    <h2>Septiembre</h2>
+                    <h3>Septiembre</h3>
                     <div id="feriadosSeptiembre"></div>
-                    <h2>Octubre</h2>
+                    <h3>Octubre</h3>
                     <div id="feriadosOctubre"></div>
-                    <h2>Noviembre</h2>
+                    <h3>Noviembre</h3>
                     <div id="feriadosNoviembre"></div>
-                    <h2>Diciembre</h2>
+                    <h3>Diciembre</h3>
                     <div id="feriadosDiciembre"></div>
                 </div>
                 </div>
+            </div>
             </div>
         </section>
 
@@ -203,9 +211,10 @@
             </div>
         </footer>
 
-        <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.1/build/global/luxon.min.js"></script>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.1/build/global/luxon.min.js"></script>
         <script src="js/scripts.js"></script>
     </body>
 </html>
