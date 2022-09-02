@@ -6,6 +6,18 @@ function valorSindicato() {
 }
 
 
+function activarSelect() {
+    document.getElementById("selectSindicato").disabled = false;
+}
+
+function desactivarSelect() {
+    document.getElementById("selectSindicato").disabled = true;
+}
+
+activarSelect();
+desactivarSelect();
+
+
 let calcularNeto = () => {
 
     let montoBruto = document.getElementById("montoBruto").value
@@ -14,14 +26,17 @@ let calcularNeto = () => {
     let aportaSindicato, porcentajeAportado;
 
 
-
     aportaSindicato = document.querySelector('input[name="descuentoSindicato"]:checked').value || 'No';
     porcentajeAportado = aportaSindicato == 'Si' ? (document.getElementById('selectSindicato').value == '2' ? 2 : 3) : 0
+
+
     let descuentosTotal = (montoBruto * 0.11) + (montoBruto * 0.03) + (montoBruto * 0.03) + montoBruto * porcentajeAportado / 100;
     montoAdicionales = (montoAdicionales - 0);
 
+
     let montoNetoSinAdic = montoBruto - descuentosTotal;
     let montoNeto = montoNetoSinAdic + montoAdicionales;
+
 
     sueldoNeto.innerHTML = `
         <div>
@@ -49,8 +64,10 @@ let calcularNeto = () => {
         },
     ]
 
+
     sessionStorage.setItem('descuentos', JSON.stringify(descuentosNeto));
     let descuentosRecuperados = JSON.parse(sessionStorage.getItem('descuentos'));
+
 
     function mostrarDescuentos() {
         let lista = document.getElementById("ulListado");
@@ -61,14 +78,15 @@ let calcularNeto = () => {
             linew.appendChild(contenido);
         })
     }
-    mostrarDescuentos();
 
+    mostrarDescuentos();
 
     let sueldoNetoAGuardar = montoNetoSinAdic;
     sessionStorage.setItem('neto', sueldoNetoAGuardar);
 
-
 }
+
+
 
 
 let buttonMostrarInfo = document.querySelector("#mostrarMasInfo");
@@ -100,7 +118,6 @@ let calcularAguinaldoActual = () => {
 
 }
 
-
 let calcularAguinaldo = () => {
 
     let aguinaldo = document.getElementById("aguinaldo").value
@@ -117,11 +134,7 @@ let calcularAguinaldo = () => {
 
 
 
-
-
-
 const DateTime = luxon.DateTime;
-
 const btnCalcular = document.getElementById('calcular');
 
 window.onload = () => {
@@ -169,7 +182,7 @@ const listaFeriados = async () => {
     const holidays = respuesta.holidays;
     console.log(holidays);
 
-    
+
     let listaHolidaysEnero = ``;
     let listaHolidaysFebrero = ``;
     let listaHolidaysMarzo = ``;
@@ -188,182 +201,180 @@ const listaFeriados = async () => {
             const feriadosEnero = new Date(item.date);
             return feriadosEnero.getMonth() === 0;
         });
-        enero.forEach((holiday) => {
-            listaHolidaysEnero += `
-            <div class="feriados">
-            <h4>${holiday.date}</h4>
-            <p class="lead mb-0">Festividad: ${holiday.name}</p>
-            <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
-            </div>
+    enero.forEach((holiday) => {
+        listaHolidaysEnero += `
+        <div class="feriados">
+        <h4>${holiday.date}</h4>
+        <p>Festividad: ${holiday.name}</p>
+        <p>Día de la Semana: ${holiday.weekday.date.name}</p>
+        </div>
             `;
-        });
+    });
 
     const febrero = holidays.filter(
         (item) => {
             const feriadosFebrero = new Date(item.date);
             return feriadosFebrero.getMonth() === 1;
         });
-        febrero.forEach((holiday) => {
-            listaHolidaysFebrero += `
-            <div class="feriados">
-            <h4>${holiday.date}</h4>
-            <p class="lead mb-0">${holiday.name}</p>
-            <p class="lead mb-0">${holiday.weekday.date.name}</p>
-            </div>
+    febrero.forEach((holiday) => {
+        listaHolidaysFebrero += `
+        <div class="feriados">
+        <h4>${holiday.date}</h4>
+        <p>Festividad: ${holiday.name}</p>
+        <p>Día de la Semana: ${holiday.weekday.date.name}</p>
+        </div>
             `;
-        });
+    });
 
     const marzo = holidays.filter(
         (item) => {
             const feriadosMarzo = new Date(item.date);
             return feriadosMarzo.getMonth() === 2;
         });
-        marzo.forEach((holiday) => {
-            listaHolidaysMarzo += `
-            <div class="feriados">
-            <h4>${holiday.date}</h4>
-            <p class="lead mb-0">Festividad: ${holiday.name}</p>
-            <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
-            </div>
+    marzo.forEach((holiday) => {
+        listaHolidaysMarzo += `
+        <div class="feriados">
+        <h4>${holiday.date}</h4>
+        <p>Festividad: ${holiday.name}</p>
+        <p>Día de la Semana: ${holiday.weekday.date.name}</p>
+        </div>
             `;
-        });
+    });
 
     const abril = holidays.filter(
         (item) => {
             const feriadosAbril = new Date(item.date);
             return feriadosAbril.getMonth() === 3;
         });
-        abril.forEach((holiday) => {
-            listaHolidaysAbril += `
-            <div class="feriados">
-            <h4>${holiday.date}</h4>
-            <p class="lead mb-0">Festividad: ${holiday.name}</p>
-            <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
-            </div>
+    abril.forEach((holiday) => {
+        listaHolidaysAbril += `
+        <div class="feriados">
+        <h4>${holiday.date}</h4>
+        <p>Festividad: ${holiday.name}</p>
+        <p>Día de la Semana: ${holiday.weekday.date.name}</p>
+        </div>
             `;
-        });
+    });
 
     const mayo = holidays.filter(
         (item) => {
             const feriadosMayo = new Date(item.date);
             return feriadosMayo.getMonth() === 4;
         });
-        mayo.forEach((holiday) => {
-            listaHolidaysMayo += `
-            <div class="feriados">
-            <h4>${holiday.date}</h4>
-            <p class="lead mb-0">Festividad: ${holiday.name}</p>
-            <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
-            </div>
+    mayo.forEach((holiday) => {
+        listaHolidaysMayo += `
+        <div class="feriados">
+        <h4>${holiday.date}</h4>
+        <p>Festividad: ${holiday.name}</p>
+        <p>Día de la Semana: ${holiday.weekday.date.name}</p>
+        </div>
             `;
-        });
+    });
 
     const junio = holidays.filter(
         (item) => {
             const feriadosJunio = new Date(item.date);
             return feriadosJunio.getMonth() === 5;
         });
-        junio.forEach((holiday) => {
-            listaHolidaysJunio += `
-            <div class="feriados">
-            <h4>${holiday.date}</h4>
-            <p class="lead mb-0">Festividad: ${holiday.name}</p>
-            <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
-            </div>
+    junio.forEach((holiday) => {
+        listaHolidaysJunio += `
+        <div class="feriados">
+        <h4>${holiday.date}</h4>
+        <p>Festividad: ${holiday.name}</p>
+        <p>Día de la Semana: ${holiday.weekday.date.name}</p>
+        </div>
             `;
-        });
+    });
 
     const julio = holidays.filter(
         (item) => {
             const feriadosJulio = new Date(item.date);
             return feriadosJulio.getMonth() === 6;
         });
-        julio.forEach((holiday) => {
-            listaHolidaysJulio += `
-            <div class="feriados">
-            <h4>${holiday.date}</h4>
-            <p class="lead mb-0">Festividad: ${holiday.name}</p>
-            <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
-            </div>
+    julio.forEach((holiday) => {
+        listaHolidaysJulio += `
+        <div class="feriados">
+        <h4>${holiday.date}</h4>
+        <p>Festividad: ${holiday.name}</p>
+        <p>Día de la Semana: ${holiday.weekday.date.name}</p>
+        </div>
             `;
-        });
+    });
 
     const agosto = holidays.filter(
         (item) => {
             const feriadosAgosto = new Date(item.date);
             return feriadosAgosto.getMonth() === 7;
         });
-        agosto.forEach((holiday) => {
-            listaHolidaysAgosto += `
-            <div class="feriados">
-            <h4>${holiday.date}</h4>
-            <p class="lead mb-0">Festividad: ${holiday.name}</p>
-            <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
-            </div>
+    agosto.forEach((holiday) => {
+        listaHolidaysAgosto += `
+        <div class="feriados">
+        <h4>${holiday.date}</h4>
+        <p>Festividad: ${holiday.name}</p>
+        <p>Día de la Semana: ${holiday.weekday.date.name}</p>
+        </div>
             `;
-        });
+    });
 
     const septiembre = holidays.filter(
         (item) => {
             const feriadosSeptiembre = new Date(item.date);
             return feriadosSeptiembre.getMonth() === 8;
         });
-        septiembre.forEach((holiday) => {
-            listaHolidaysSeptiembre += `
-            <div class="feriados">
-            <h4>${holiday.date}</h4>
-            <p class="lead mb-0">Festividad: ${holiday.name}</p>
-            <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
-            </div>
+    septiembre.forEach((holiday) => {
+        listaHolidaysSeptiembre += `
+        <div class="feriados">
+        <h4>${holiday.date}</h4>
+        <p>Festividad: ${holiday.name}</p>
+        <p>Día de la Semana: ${holiday.weekday.date.name}</p>
+        </div>
             `;
-        });
+    });
 
     const octubre = holidays.filter(
         (item) => {
             const feriadosOctubre = new Date(item.date);
             return feriadosOctubre.getMonth() === 9;
         });
-        octubre.forEach((holiday) => {
-            listaHolidaysOctubre += `
-            <div class="feriados">
-            <h4>${holiday.date}</h4>
-            <p class="lead mb-0">Festividad: ${holiday.name}</p>
-            <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
-            </div>
+    octubre.forEach((holiday) => {
+        listaHolidaysOctubre += `
+        <div class="feriados">
+        <h4>${holiday.date}</h4>
+        <p>Festividad: ${holiday.name}</p>
+        <p>Día de la Semana: ${holiday.weekday.date.name}</p>
+        </div>
             `;
-        });
+    });
 
     const noviembre = holidays.filter(
         (item) => {
             const feriadosNoviembre = new Date(item.date);
             return feriadosNoviembre.getMonth() === 10;
         });
-        noviembre.forEach((holiday) => {
-            listaHolidaysNoviembre += `
-            <div class="feriados">
-            <h4>${holiday.date}</h4>
-            <p class="lead mb-0">Festividad: ${holiday.name}</p>
-            <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
-            </div>
+    noviembre.forEach((holiday) => {
+        listaHolidaysNoviembre += `
+        <div class="feriados">
+        <h4>${holiday.date}</h4>
+        <p>Festividad: ${holiday.name}</p>
+        <p>Día de la Semana: ${holiday.weekday.date.name}</p>
+        </div>
             `;
-        });
+    });
 
     const diciembre = holidays.filter(
         (item) => {
             const feriadosDiciembre = new Date(item.date);
             return feriadosDiciembre.getMonth() === 11;
         });
-        diciembre.forEach((holiday) => {
-            listaHolidaysDiciembre += `
-            <div class="feriados">
-            <h4>${holiday.date}</h4>
-            <p class="lead mb-0">Festividad: ${holiday.name}</p>
-            <p class="lead mb-0">Día de la Semana: ${holiday.weekday.date.name}</p>
-            </div>
+    diciembre.forEach((holiday) => {
+        listaHolidaysDiciembre += `
+        <div class="feriados">
+        <h4>${holiday.date}</h4>
+        <p>Festividad: ${holiday.name}</p>
+        <p>Día de la Semana: ${holiday.weekday.date.name}</p>
+        </div>
             `;
-        });
-
-
+    });
 
 
     let feriadosEnero = document.getElementById('feriadosEnero')
@@ -374,13 +385,13 @@ const listaFeriados = async () => {
 
     let feriadosMarzo = document.getElementById('feriadosMarzo')
     feriadosMarzo.innerHTML = listaHolidaysMarzo;
-    
+
     let feriadosAbril = document.getElementById('feriadosAbril')
     feriadosAbril.innerHTML = listaHolidaysAbril;
 
     let feriadosMayo = document.getElementById('feriadosMayo')
     feriadosMayo.innerHTML = listaHolidaysMayo;
-    
+
     let feriadosJunio = document.getElementById('feriadosJunio')
     feriadosJunio.innerHTML = listaHolidaysJunio;
 
@@ -392,22 +403,23 @@ const listaFeriados = async () => {
 
     let feriadosSeptiembre = document.getElementById('feriadosSeptiembre')
     feriadosSeptiembre.innerHTML = listaHolidaysSeptiembre;
-    
+
     let feriadosOctubre = document.getElementById('feriadosOctubre')
     feriadosOctubre.innerHTML = listaHolidaysOctubre;
 
     let feriadosNoviembre = document.getElementById('feriadosNoviembre')
     feriadosNoviembre.innerHTML = listaHolidaysNoviembre;
-    
+
     let feriadosDiciembre = document.getElementById('feriadosDiciembre')
     feriadosDiciembre.innerHTML = listaHolidaysDiciembre;
 
 
     let buttonMostrarFeriados = document.querySelector("#mostrarFeriados");
     let informacionFeriados = document.querySelector("#masInfoFeriados");
-    
+
+
     buttonMostrarFeriados.addEventListener("click", mostrarInformacion);
-    
+
     function mostrarInformacion(event) {
         event.preventDefault();
         informacionFeriados.classList.toggle("hidden");
@@ -415,7 +427,6 @@ const listaFeriados = async () => {
             ? "Mostrar Feriados"
             : "Ocultar Feriados";
     }
-
 
 };
 

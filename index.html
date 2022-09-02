@@ -63,6 +63,7 @@
                     <div class="col-lg-6 order-lg-1 my-auto showcase-text">
                         <h2>Calcular Sueldo Neto</h2>
                         <p class="lead mb-0">Ingresá tu Sueldo Bruto:</p>
+                        <p class="obligatorio">*Obligatorio</p>
                         <div class="input-group mb-3">
                             <span class="input-group-text">$</span>
                             <input type="text" class="form-control" aria-label="Amount" id="montoBruto">
@@ -70,12 +71,13 @@
                 
                         <div class="input-group-radio mb-3">
                             <p class="lead mb-0">¿Estas afiliado al Sindicato?</p>
-                            <input class="radio" type="radio" name="descuentoSindicato" value="No"><label class="lead">No</label>
-                            <input class="radio" type="radio" name="descuentoSindicato" value="Si" required><label class="lead">Si</label>
+                            <p class="obligatorio">*Obligatorio</p>
+                            <input class="radio" type="radio" name="descuentoSindicato" value="No" onclick="desactivarSelect()" ><label class="lead">No</label>
+                            <input class="radio" type="radio" name="descuentoSindicato" value="Si" onclick="activarSelect()"required><label class="lead">Si</label>
                             <p class="lead mb-0">Si lo estas, por favor, indicá el porcentaje aportado:</p>
                         </div>
                 
-                        <select class="form-select" id="selectSindicato" onchange="valorSindicato()">
+                        <select class="form-select" id="selectSindicato" onchange="valorSindicato()" disabled="">
                             <option value="">Porcentaje Aportado</option>
                             <option value="2">2%</option>
                             <option value="3">3%</option>
@@ -142,8 +144,10 @@
 
                         <div class="vacaForm">
                             <label contenteditable="true" for="fechaIngreso" class="lead">Fecha de Ingreso:</label>
+                            <p class="obligatorio">*Obligatorio</p>
                             <input type="date" id="fechaIngreso" name="fechaIngreso" value="" min="" max="" contenteditable="true" class="vacaForm">
                             <label contenteditable="true" for="fechaVacaciones" class="lead">Fecha a tomar Vacaciones:</label>
+                            <p class="obligatorio">*Obligatorio</p>
                             <input type="date" id="fechaVacaciones" name="fechaVacaciones" value="" min="" max="" contenteditable="true" class="vacaForm">
                             <input type="button" class="btn btn-primary" value="Calcular Vacaciones" id="calcular">
                         </div>
@@ -213,7 +217,6 @@
 
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.1/build/global/luxon.min.js"></script>
         <script src="js/scripts.js"></script>
     </body>
